@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2023 at 07:54 AM
+-- Generation Time: Jan 28, 2023 at 01:07 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -146,6 +146,13 @@ CREATE TABLE `telephone` (
   `User_ID` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `telephone`
+--
+
+INSERT INTO `telephone` (`Telephone_Number`, `User_ID`) VALUES
+(779876543, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -164,7 +171,6 @@ CREATE TABLE `users` (
   `House` varchar(300) NOT NULL,
   `Street` varchar(200) NOT NULL,
   `City` varchar(200) NOT NULL,
-  `Province` varchar(200) NOT NULL,
   `Country` varchar(200) NOT NULL,
   `Last_Login` datetime NOT NULL DEFAULT current_timestamp(),
   `Type` varchar(100) NOT NULL,
@@ -173,6 +179,13 @@ CREATE TABLE `users` (
   `Location_Permission` varchar(100) NOT NULL,
   `Promotion_Programme_Permission` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`User_ID`, `First_Name`, `Last_Name`, `User_Name`, `Password`, `NIC`, `Email`, `Postal_Code`, `House`, `Street`, `City`, `Country`, `Last_Login`, `Type`, `Current_Location`, `Permanant_Location`, `Location_Permission`, `Promotion_Programme_Permission`) VALUES
+(2, 'Samantha', 'Perera', 'sam', '202cb962ac', '123456789012', 'samantha@gmail.com', 12345, 'no. 45', 'School Lane', 'Homagama', 'Sri Lanka', '2023-01-28 17:23:10', '', '', '', '', '');
 
 --
 -- Indexes for dumped tables
@@ -186,6 +199,28 @@ ALTER TABLE `admin`
   ADD UNIQUE KEY `User_Name` (`User_Name`),
   ADD UNIQUE KEY `Password` (`Password`),
   ADD UNIQUE KEY `Email` (`Email`);
+
+--
+-- Indexes for table `telephone`
+--
+ALTER TABLE `telephone`
+  ADD PRIMARY KEY (`Telephone_Number`,`User_ID`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`User_ID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `User_ID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

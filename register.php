@@ -15,9 +15,10 @@ require_once("ui/navbar.ui.php");
 //This variable Can store one alert message
 $JSAlertMessage=null;
 
-//This code Inser new row to user table
+//This code Insert new row to user table
 if(isset($_POST["register"]))
 {
+    $userId=null;
     $firstName=$_POST["firstName"];
     $lastName=$_POST["lastName"];
     $nic=$_POST["nic"];
@@ -30,9 +31,7 @@ if(isset($_POST["register"]))
     $username=$_POST["username"];
     $password=$_POST["password"];
     $conformPassword=$_POST["conformPassword"];
-    $telephone1=$_POST["telephone1"];
-    $telephone2=$_POST["telephone2"];
-    $telephone3=$_POST["telephone3"];
+    $telephone=array($_POST["telephone1"],$_POST["telephone2"],$_POST["telephone3"]);
 
     $proccedInsert=true;
 
@@ -40,10 +39,43 @@ if(isset($_POST["register"]))
         $JSAlertMessage="Password and conform password did not matched!";
         $proccedInsert=false;
     }
+    else{
+        $password=md5($password);
+    }
 
     if($proccedInsert){
-        $query="";
+        $quary="INSERT INTO `users`(`User_ID`, `First_Name`, `Last_Name`, `NIC`, `Email`, `House`, `Street`, `City`, `Postal_Code`, `Country`,`User_Name`, `Password`) VALUES (null, :firstName, :lastName, :nic, :email, :addressLine1, :addressLine2, :city, :postalCode, :country, :username, :password);";
+        $sql = $conn->prepare($quary);
+        $sql->bindparam(":firstName",$firstName);
+        $sql->bindparam(":lastName",$lastName);
+        $sql->bindparam(":nic",$nic);
+        $sql->bindparam(":email",$email);
+        $sql->bindparam(":addressLine1",$addressLine1);
+        $sql->bindparam(":addressLine2",$addressLine2);
+        $sql->bindparam(":city",$city);
+        $sql->bindparam(":postalCode",$postalCode);
+        $sql->bindparam(":country",$country);
+        $sql->bindparam(":username",$username);
+        $sql->bindparam(":password",$password);
+        $sql->bindparam(":lastName",$lastName);
+        $sql->execute();
+        $userId = $conn->lastInsertId();
+
+        if($userId!=null){
+            foreach ($telephone as $value) {
+                if($value!=""){
+                    $quary="INSERT INTO `telephone`(`User_ID`, `Telephone_Number`) VALUES (:userId, :telephone)";
+                    $sql = $conn->prepare($quary);
+                    $sql->bindparam(":userId",$userId);
+                    $sql->bindparam(":telephone",$value);
+                    $sql->execute();
+
+                }
+            }
+            $JSAlertMessage="User Account Created!";
+        }
     }
+
 }
 
 
@@ -77,12 +109,12 @@ if(isset($_POST["register"]))
     <?php showNavBar("index"); // navigation bar ?>
     <div class="container myformcontainer">
         <h3 style="margin-top: 20px;">Register for new account</h3>
-        <form method="post" action="register">
+        <form method="post" action="register.php">
             <div class="form-group"><label>First Name</label><input class="form-control" type="text" id="firstName" placeholder="Samantha" name="firstName" required=""></div>
             <div class="form-group"><label>Last Name</label><input class="form-control" type="text" id="lastName" placeholder="Perera" name="lastName" required=""></div>
             <div class="form-group"><label>NIC</label><input class="form-control" type="text" id="nic" placeholder="198813005647" name="nic" required=""></div>
             <div class="form-group"><label>Email</label><input class="form-control" type="email" name="email" placeholder="samantha@email.com" required=""></div>
-            <div class="form-group"><label>Address</label><input class="form-control" type="text" id="addressLine1" placeholder="No. 45" name="addressLine1" required=""><input class="form-control" type="text" id="addressLine2" placeholder="School Lane" name="addressLine2" required="" style="margin-top:2px;"><input class="form-control" type="text" id="city" placeholder="Homagama" name="city" required="Homagama" style="margin-top:2px;"><input class="form-control" type="text" id="postalCode" placeholder="12456" name="postalCode" required="" style="margin-top:2px;"><input class="form-control" type="text" id="country" name="country" required="" style="margin-top:2px;" disabled="" value="Sri Lanka"></div>
+            <div class="form-group"><label>Address</label><input class="form-control" type="text" id="addressLine1" placeholder="No. 45" name="addressLine1" required=""><input class="form-control" type="text" id="addressLine2" placeholder="School Lane" name="addressLine2" required="" style="margin-top:2px;"><input class="form-control" type="text" id="city" placeholder="Homagama" name="city" required="Homagama" style="margin-top:2px;"><input class="form-control" type="text" id="postalCode" placeholder="12456" name="postalCode" required="" style="margin-top:2px;"><input class="form-control" type="text" id="country" name="country" required="" style="margin-top:2px;" value="Sri Lanka"></div>
             <div class="form-group"><label>Username</label><input class="form-control" type="text" id="username" placeholder="a Unique name for your account" name="username" required=""></div>
             <div class="form-group"><label>Password</label><input class="form-control" type="password" id="password" placeholder="Should contain letters and numbers" required="" name="password"><input class="form-control" type="password" id="conformPassword" placeholder="Retype Password" required="" name="conformPassword" style="margin-top:2px;"></div>
             <div class="form-group"><label>Telephone</label><input class="form-control" type="number" id="telephone1" name="telephone1" required="" placeholder="0771234567"><input class="form-control" type="number" id="telephone2" name="telephone2" placeholder="Another number (Optional)" style="margin-top:2px;"><input class="form-control" type="number" id="telephone3" name="telephone3" placeholder="Another number (Optional)" style="margin-top:2px;"></div>
