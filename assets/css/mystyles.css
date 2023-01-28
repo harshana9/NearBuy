@@ -1,0 +1,11 @@
+body{
+	background: rgba(218, 207, 255, 0.5);
+}
+
+.form-group{
+	padding-top: 10px;
+}
+
+.myformcontainer{
+	max-width: 600px;
+}

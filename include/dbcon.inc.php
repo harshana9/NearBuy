@@ -1,6 +1,6 @@
 <?php
 
-	$Database = "nearbuy"; //database name
+	$Database = "details_db"; //database name
 	$Hostname = "localhost";
 	$Username = "root";
 	$Password = "";

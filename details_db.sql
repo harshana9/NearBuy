@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 30, 2022 at 05:22 PM
--- Server version: 10.4.20-MariaDB
--- PHP Version: 8.0.9
+-- Generation Time: Jan 28, 2023 at 07:54 AM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -186,122 +186,6 @@ ALTER TABLE `admin`
   ADD UNIQUE KEY `User_Name` (`User_Name`),
   ADD UNIQUE KEY `Password` (`Password`),
   ADD UNIQUE KEY `Email` (`Email`);
-
---
--- Indexes for table `admin_telephone`
---
-ALTER TABLE `admin_telephone`
-  ADD PRIMARY KEY (`Telephone_Number`),
-  ADD KEY `ad` (`Admin_ID`);
-
---
--- Indexes for table `category`
---
-ALTER TABLE `category`
-  ADD PRIMARY KEY (`Category_ID`);
-
---
--- Indexes for table `item`
---
-ALTER TABLE `item`
-  ADD PRIMARY KEY (`Item_ID`),
-  ADD KEY `category` (`Category_ID`),
-  ADD KEY `use` (`User_ID`),
-  ADD KEY `adid` (`Admin_ID`);
-
---
--- Indexes for table `membership`
---
-ALTER TABLE `membership`
-  ADD PRIMARY KEY (`Membership_ID`),
-  ADD KEY `PID` (`Payment_ID`),
-  ADD KEY `USEID` (`User_ID`);
-
---
--- Indexes for table `offer`
---
-ALTER TABLE `offer`
-  ADD PRIMARY KEY (`Offer_ID`),
-  ADD KEY `items` (`Item_ID`),
-  ADD KEY `us` (`User_ID`);
-
---
--- Indexes for table `payment`
---
-ALTER TABLE `payment`
-  ADD PRIMARY KEY (`Payment_ID`),
-  ADD KEY `AID` (`Admin_ID`),
-  ADD KEY `UID` (`User_ID`),
-  ADD KEY `mid` (`Membership_ID`);
-
---
--- Indexes for table `privilage_ details`
---
-ALTER TABLE `privilage_ details`
-  ADD PRIMARY KEY (`Privilage_ID`);
-
---
--- Indexes for table `telephone`
---
-ALTER TABLE `telephone`
-  ADD PRIMARY KEY (`Telephone_Number`),
-  ADD KEY `USID` (`User_ID`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`User_ID`),
-  ADD UNIQUE KEY `User_Name` (`User_Name`),
-  ADD UNIQUE KEY `Password` (`Password`),
-  ADD UNIQUE KEY `Email` (`Email`),
-  ADD UNIQUE KEY `NIC` (`NIC`);
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `admin_telephone`
---
-ALTER TABLE `admin_telephone`
-  ADD CONSTRAINT `ad` FOREIGN KEY (`Admin_ID`) REFERENCES `admin` (`Admin_ID`);
-
---
--- Constraints for table `item`
---
-ALTER TABLE `item`
-  ADD CONSTRAINT `adid` FOREIGN KEY (`Admin_ID`) REFERENCES `admin` (`Admin_ID`),
-  ADD CONSTRAINT `category` FOREIGN KEY (`Category_ID`) REFERENCES `category` (`Category_ID`),
-  ADD CONSTRAINT `use` FOREIGN KEY (`User_ID`) REFERENCES `users` (`User_ID`);
-
---
--- Constraints for table `membership`
---
-ALTER TABLE `membership`
-  ADD CONSTRAINT `PID` FOREIGN KEY (`Payment_ID`) REFERENCES `payment` (`Payment_ID`),
-  ADD CONSTRAINT `USEID` FOREIGN KEY (`User_ID`) REFERENCES `users` (`User_ID`);
-
---
--- Constraints for table `offer`
---
-ALTER TABLE `offer`
-  ADD CONSTRAINT `items` FOREIGN KEY (`Item_ID`) REFERENCES `item` (`Item_ID`),
-  ADD CONSTRAINT `us` FOREIGN KEY (`User_ID`) REFERENCES `users` (`User_ID`) ON UPDATE NO ACTION;
-
---
--- Constraints for table `payment`
---
-ALTER TABLE `payment`
-  ADD CONSTRAINT `AID` FOREIGN KEY (`Admin_ID`) REFERENCES `admin` (`Admin_ID`),
-  ADD CONSTRAINT `UID` FOREIGN KEY (`User_ID`) REFERENCES `users` (`User_ID`),
-  ADD CONSTRAINT `mid` FOREIGN KEY (`Membership_ID`) REFERENCES `membership` (`Membership_ID`);
-
---
--- Constraints for table `telephone`
---
-ALTER TABLE `telephone`
-  ADD CONSTRAINT `USID` FOREIGN KEY (`User_ID`) REFERENCES `users` (`User_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
