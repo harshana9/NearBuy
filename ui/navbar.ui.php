@@ -9,6 +9,9 @@
                     <li class="nav-item">
                         <a class="nav-link <?php if($currentPage=="search"){echo "active";} ?>" href="search.php">Search Something</a>
                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link <?php if($currentPage=="about"){echo "active";} ?>" href="about.php">About Us</a>
+                    </li>
                 </ul>
                 <span class="navbar-text actions">
                     <a class="login <?php if($currentPage=="account"){echo "active";} ?>" href="myaccount.php">My Account</a>
