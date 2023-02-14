@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>NearBuyForms</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <form>
+            <div class="form-group"><label>Title</label><input class="form-control" type="text" id="title" placeholder="Title of your ad" name="title" required=""></div>
+            <div class="form-group"><label>Category</label><select class="form-control" id="category" name="category" required="">
+                    <optgroup label="This is a group">
+                        <option value="0">category 1</option>
+                    </optgroup>
+                </select></div>
+            <div class="form-group"><label>Description</label><textarea class="form-control" id="description" name="description" required="" placeholder="Describe your item..."></textarea></div>
+            <div class="form-group"><label>Price</label><input class="form-control" type="number" id="price" required="" name="price" placeholder="Expected Sell Price"></div>
+            <div class="form-group"><label>Contact</label><input class="form-control" type="number" id="telephone1" name="telephone1" required="" placeholder="0771234567"><input class="form-control" type="number" id="telephone2" name="telephone2" placeholder="Another number (Optional)" style="margin-top:2px;"><input class="form-control" type="number" id="telephone3" name="telephone3" placeholder="Another number (Optional)" style="margin-top:2px;"></div>
+            <div class="form-group"><button class="btn btn-success" id="listitem" type="submit" name="listitem" style="float:right;">Submit</button><button class="btn btn-link" type="reset">Reset</button></div>
+        </form>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

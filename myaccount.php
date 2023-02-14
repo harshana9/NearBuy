@@ -1,4 +1,7 @@
 <?php
+    session_start();
+    require_once("include/dbcon.inc.php");
+    require_once("include/loginverify.inc.php");
     require_once("ui/jsAlert.ui.php");
     require_once("ui/footer.ui.php");
     require_once("ui/navbar.ui.php");
@@ -7,10 +10,24 @@
     if(isset($_GET["msg"])){
         $JSAlertMessage=resolveURLmsg($_GET["msg"]);
     }
+    
+    loginVerify();
 
-    if(isset($_GET["urlBack"])){
-        $urlBack=resolveURLmsg($_GET["urlBack"]);
-    }
+    //Variables
+
+    $profilebodyclass="";
+    $activitybodyclass="show active";
+    $activitylinkclass="active";
+    $profilelinkclass="";
+    //$disable="";
+
+    /*if($_SESSION["accountStatus"]==1){
+        $profilebodyclass="show active";
+        $activitybodyclass="";
+        $activitylinkclass="disabled";
+        $profilelinkclass="active";
+        $disable="aria-disabled=\"true\"";
+    }*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +35,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>NearBuy -About</title>
+    <title>NearBuy - MyAccount</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
@@ -52,19 +69,33 @@
 </head>
 
 <body>
-    <?php showNavBar("about"); // navigation bar ?>
+    <?php showNavBar("myaccount"); // navigation bar ?>
     <div id="empresa" style="padding:20px;margin:1px;">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6 mx-auto">
-                    <div class="card">
-                        <div class="card-header">
-                            <img src="images/fullLogoTransparent.png">
+                <div>
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item" role="presentation"><a class="nav-link <?php echo $activitylinkclass; ?>" role="tab" data-bs-toggle="tab" href="#myactivity" id="myactivity_link">My Activity</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link <?php echo $profilelinkclass; ?>" role="tab" data-bs-toggle="tab" href="#mywishlist" id="profile_link">Wish List</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link <?php echo $profilelinkclass; ?>" role="tab" data-bs-toggle="tab" href="#addtowishlist" id="profile_link">Add to Wish List</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link <?php echo $profilelinkclass; ?>" role="tab" data-bs-toggle="tab" href="#profile" id="profile_link">My Profile</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane myTabStyle <?php echo $activitybodyclass; ?>" role="tabpanel" id="myactivity">
+                            <?php require("myaccount.myactivity.php");
+                            //require activity tab body ?>
                         </div>
-                        <div class="card-body" style="text-align:center;">
-                            <h4 class="card-title">About</h4>
-                            <h6 class="text-muted card-subtitle mb-2">Naerby is a C2C and B2C online marketplace</h6>
-                            <p class="card-text">Online Marketplace With Real-Time Alerting System for Traveling Buyers.</span><br><span style="color: black;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Main objective of the system is when a&nbsp;potential customer travelling through an area where an item has posted for sale&nbsp;which he was willing to buy , he will be alerted by the system. Saving time effort and the cost of the&nbsp;users&nbsp;protecting environment by reducing&nbsp;vehicle emissions.<br/><br/><u>Contact us</u><br><b>Email : </b>admin@nearbuy.rf.gd<br><br></p><a class="btn btn-primary" onclick="history.back()">OK</a>
+                        <div class="tab-pane myTabStyle" role="tabpanel" id="mywishlist">
+                            <?php require("myaccount.mywishlist.php");
+                            //require activity tab body ?>
+                        </div>
+                        <div class="tab-pane myTabStyle" role="tabpanel" id="addtowishlist">
+                            <?php require("myaccount.addtowishlist.php");
+                            //require activity tab body ?>
+                        </div>
+                        <div class="tab-pane myTabStyle" role="tabpanel" id="profile">
+                            <?php require("myaccount.profile.php");
+                            //require profile tab body ?>
                         </div>
                     </div>
                 </div>

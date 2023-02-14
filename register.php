@@ -73,6 +73,7 @@ if(isset($_POST["register"]))
                 }
             }
             $JSAlertMessage="User Account Created!";
+            header('Location: ./login.php');
         }
     }
 
@@ -86,7 +87,8 @@ if(isset($_POST["register"]))
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Register</title>
+    <title>NearBuy - Register</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
@@ -106,7 +108,7 @@ if(isset($_POST["register"]))
 </head>
 
 <body>
-    <?php showNavBar("index"); // navigation bar ?>
+    <?php showNavBar("register"); // navigation bar ?>
     <div class="container myformcontainer">
         <h3 style="margin-top: 20px;">Register for new account</h3>
         <form method="post" action="register.php">
@@ -127,8 +129,13 @@ if(isset($_POST["register"]))
         showAlert($JSAlertMessage); //if there is any alerts they will be shown
     ?>
 
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- UI JS stuff --->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="assets/js/Contact-FormModal-Contact-Form-with-Google-Map.js"></script>
+    <script src="assets/js/Multi-step-form.js"></script>
 </body>
 
 </html>

@@ -12,18 +12,14 @@
     //Verify user account status
     function loginVerify($status=null)
     {
-        if(isset($_SESSION["userId"])){
+        if(isset($_SESSION["adminID"])){
             if($status=="login"){
-                header("Location: ./index.php");
+                header("Location: panel.php");
+
             }
         }
         else{
-            if($status=="insidePage"){
-                header("Location: ./../login.php");
-            }
-            else{
-                header("Location: ./login.php");
-            }
+            header("Location: index.php");
         }
     }
 

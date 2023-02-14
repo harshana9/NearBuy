@@ -19,7 +19,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>DoAcc1.0</title>
+    <title>NearBuy</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
@@ -35,45 +36,54 @@
     <link rel="stylesheet" href="assets/css/Registration-Form-with-Photo.css">
     <link rel="stylesheet" href="assets/css/Search-Input-Responsive-with-Icon.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <style type="text/css">
+        .btn-light{
+            background-color: rgb(179, 255, 204);
+        }
+        .myContainer{
+            padding:10px;
+            margin:1px;
+        }
+    </style>
 </head>
 
 <body>
 
     <?php showNavBar("index"); // navigation bar ?>
 
-    <div id="empresa" style="padding:20px;margin:1px;">
+    <div id="empresa" class="myContainer">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6 col-md-7 col-lg-7">
-                    <h1>Looking for someing to buy?</h1>
-                    <p>Description Description DescriptionDescription Description Description Description Description Description&nbsp;</p>
-                    <a href="search.php" class="btn btn-light btn-lg w-100">Click here to search</a>
+                <div class="col-sm-9 col-md-9 col-lg-9">
+                    <h2>Buy efficint!</h2>
+                    <p>Looking for someting to buy go with nearby, cause it make life easier, efficint and eco-friendly.</p>
+                    <a href="register.php" class="btn btn-light btn-lg w-100">Create Wishlist or Search market </a>
                 </div>
-                <div class="col-sm-6 col-md-5 col-lg-5"><img src="assets/img/gift-give.png"></div>
+                <div class="col-sm-3 col-md-3 col-lg-3"><img src="images/buy.jpg"></div>
             </div>
         </div>
     </div>
-    <div id="empresa-1" style="padding:20px;margin:1px;">
+    <div id="empresa-1" class="myContainer">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6 col-md-5 col-lg-5"><img src="assets/img/together.png"></div>
-                <div class="col-sm-6 col-md-7 col-lg-7">
-                    <h1></h1>
-                    <p>Description Description DescriptionDescription Description Description Description Description Description&nbsp;</p>
-                    <a href="search.php" class="btn btn-light btn-lg w-100">List item for sale</a>
+                <div class="col-sm-3 col-md-3 col-lg-3 order-last order-sm-first"><img src="images/sell.jpg"></div>
+                <div class="col-sm-9 col-md-9 col-lg-9">
+                    <h2>Sell smart!</h2>
+                    <p>Dont wait untill your buyers move away. Let them know you are nearby!</p>
+                    <a href="sell.php" class="btn btn-light btn-lg w-100">List item for sale</a>
                 </div>
             </div>
         </div>
     </div>
-    <div id="empresa-2" style="padding:20px;margin:1px;">
+    <div id="empresa-2" class="myContainer">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6 col-md-7 col-lg-7">
-                    <h1>Who we are</h1>
-                    <p>Description Description DescriptionDescription Description Description Description Description Description&nbsp;</p>
+                <div class="col-sm-9 col-md-9 col-lg-9">
+                    <h2>Helthy environment, Better lifestyle!</h2>
+                    <p>Nearby makes your day-to-day travles optimized. Reducing travel on same route many times, making you an envronment frendly person.</p>
                     <a href="about.php" class="btn btn-light btn-lg w-100">Learn more...</a>
                 </div>
-                <div class="col-sm-6 col-md-5 col-lg-5"><img src="assets/img/flower-give.png"></div>
+                <div class="col-sm-3 col-md-3 col-lg-3"><img src="images/eco.png"></div>
             </div>
         </div>
     </div>
