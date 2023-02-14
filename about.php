@@ -18,7 +18,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>NearBuy -About</title>
+    <title>AlertMyWishlist -About</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
@@ -64,7 +64,7 @@
                         <div class="card-body" style="text-align:center;">
                             <h4 class="card-title">About</h4>
                             <h6 class="text-muted card-subtitle mb-2">Naerby is a C2C and B2C online marketplace</h6>
-                            <p class="card-text">Online Marketplace With Real-Time Alerting System for Traveling Buyers.</span><br><span style="color: black;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Main objective of the system is when a&nbsp;potential customer travelling through an area where an item has posted for sale&nbsp;which he was willing to buy , he will be alerted by the system. Saving time effort and the cost of the&nbsp;users&nbsp;protecting environment by reducing&nbsp;vehicle emissions.<br/><br/><u>Contact us</u><br><b>Email : </b>admin@nearbuy.rf.gd<br><br></p><a class="btn btn-primary" onclick="history.back()">OK</a>
+                            <p class="card-text">Online Marketplace With Real-Time Alerting System for Traveling Buyers.</span><br><span style="color: black;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Main objective of the system is when a&nbsp;potential customer travelling through an area where an item has posted for sale&nbsp;which he was willing to buy , he will be alerted by the system. Saving time effort and the cost of the&nbsp;users&nbsp;protecting environment by reducing&nbsp;vehicle emissions.<br/><br/><u>Contact us</u><br><b>Email : </b>admin@alertMyWishlist.rf.gd<br><br></p><a class="btn btn-primary" onclick="history.back()">OK</a>
                         </div>
                     </div>
                 </div>
