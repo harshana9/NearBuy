@@ -5,7 +5,7 @@
     require_once("../ui/footer.ui.php");
     require_once("../ui/navbar.ui.php");
 
-    //loginVerify();
+    loginVerify("insidePage");
 
     $txtLat=null;
     $txtLng=null;

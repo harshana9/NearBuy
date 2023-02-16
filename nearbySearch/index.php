@@ -10,7 +10,7 @@ require_once("../include/redirect.inc.php");
 require_once("../include/loginverify.inc.php");
 
 
-loginVerify();
+loginVerify("insidePage");
 ?>
 <!DOCTYPE html>
 <html>
@@ -121,25 +121,8 @@ function addToResultList(item, index){
 	  	//itemList.push(item);
 		  //console.log(itemList);
       document.getElementById('resultContainer').innerHTML += resultBoxCreater(item[0],item[1],item[2],item[3],item[4]);
-		///
-
-
-
-
-
-
-
-
-		//if user enabled notification gives
-
-
-
-
-
-
-
-
-		///
+      var msgBody = "for "+item[2]+" at "+item[3];
+      showNotification(item[1],msgBody)
 	}
 
 	//console.log("array is:"+arr);
@@ -203,6 +186,29 @@ navigator.geolocation.watchPosition(successCallback, errorCallback);
 //reverseGeocode(6.679401295625881, 80.03576210940265);
 </script>
 
+<script type="text/javascript">
+
+  function showNotification(title,body) {
+    var icon = "../images/notification-icon.png";
+    if (!("Notification" in window)) {
+      // Check if the browser supports notifications
+      alert("This browser does not support desktop notification");
+    } else if (Notification.permission === "granted") {
+      // Check whether notification permissions have already been granted;
+      // if so, create a notification
+      const notification = new Notification(title, { body, icon });
+      // …
+    } else if (Notification.permission !== "denied") {
+      // We need to ask the user for permission
+      Notification.requestPermission().then((permission) => {
+        // If the user accepts, let's create a notification
+        if (permission === "granted") {
+          const notification = new Notification(title, { body, icon });
+        }
+      });
+    }
+  }
+</script>
 
 
 <!--- UI JS stuff --->

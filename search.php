@@ -23,7 +23,7 @@ loginVerify("search");
 	$search_result_data=array();
 	$txtSearch="";
 	$data_get_success=0;
-	$ddlCategory=null;
+	$ddlCategory="";
 
 	//get search infomation from address bar when using page navigator
 	if(isset($_GET["search_info"])){
@@ -49,7 +49,13 @@ loginVerify("search");
 		$sql_quary="SELECT * FROM item LEFT JOIN (SELECT * FROM item_image GROUP BY item_image_item_id) AS tbl_one_image ON item.`item_ID` = tbl_one_image.`item_image_item_id` WHERE `Item_Title` LIKE :item_name ORDER BY Post_Date";
 		$search_param="%".$txtSearch."%";
 		$query_params=array(":item_name"=>$search_param);
-			
+		
+		if($ddlCategory!=""){
+			$sql_quary="SELECT * FROM item LEFT JOIN (SELECT * FROM item_image GROUP BY item_image_item_id) AS tbl_one_image ON item.`item_ID` = tbl_one_image.`item_image_item_id` WHERE `Category_ID`=:category_id AND `Item_Title` LIKE :item_name ORDER BY Post_Date";
+			$query_params=array(":category_id"=>$ddlCategory,":item_name"=>$search_param);
+		}
+
+
 		$search_result=spilit_result($page,5,$sql_quary,$query_params);
 		//print_r($search_result);
 
@@ -107,7 +113,7 @@ loginVerify("search");
                                	<?php
 					            $c_sql="SELECT * FROM itemcategory;";
 					            $class="form-select form-select-lg flex-shrink-1 form-control-borderless side-margin";
-					            dbCombo($c_sql,"ddlCategory","Categort_ID","Category_Name",$ddlCategory,$c_required=true,$class);
+					            dbCombo($c_sql,"ddlCategory","Category_ID","Category_Name",$ddlCategory,$c_required=true,$class);
        							 ?>
                                 
                                 <input type="search" name="txtSearch" id="txtSearch" class="form-control form-control-lg flex-shrink-1 form-control-borderless side-margin" value="<?php echo $txtSearch; ?>" placeholder="Enter Search Text" autofocus/>

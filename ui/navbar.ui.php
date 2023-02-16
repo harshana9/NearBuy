@@ -7,7 +7,7 @@
 ?>
 
     <nav class="navbar navbar-light navbar-expand-lg navigation-clean-button">
-        <div class="container"><a class="navbar-brand" href="index.php"><font color="red">Alert</font>MyWishlist</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand" href="<?php echo $linkPrefix; ?>./index.php"><font color="red">Alert</font>MyWishlist</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
